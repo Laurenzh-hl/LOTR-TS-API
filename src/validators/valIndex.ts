@@ -81,6 +81,27 @@ class ModelValidator {
         .withMessage("The weapon value should be a string"),
     ];
   }
+
+  checkCharPatch() {
+    return [
+      body("name")
+        .optional()
+        .isString()
+        .withMessage("The name value should be a string"),
+      body("origin")
+        .optional()
+        .isString()
+        .withMessage("The origin value should be a string"),
+      body("fellowshipMember")
+        .optional()
+        .isBoolean()
+        .withMessage("The fellowshipMember value should be a boolean"),
+      body("weapon")
+        .optional()
+        .isString()
+        .withMessage("The weapon value should be a string"),
+    ];
+  }
 }
 
 export default new ModelValidator();
