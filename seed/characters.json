@@ -1,0 +1,124 @@
+ [
+  {
+    "name": "Frodo Baggins",
+    "origin": "The Shire",
+    "fellowshipMember": true,
+    "weapon": "Sting"
+  },
+  {
+    "name": "Legolas",
+    "origin": "Mirkwood",
+    "fellowshipMember": true,
+    "weapon": "Bow"
+  },
+  {
+    "name": "Gandalf The Grey",
+    "origin": "Valinor",
+    "fellowshipMember": true,
+    "weapon": "Staff"
+  },
+  {
+    "name": "Gimli, Son of Gloin",
+    "origin": "Erebor",
+    "fellowshipMember": true,
+    "weapon": "Axe"
+  },
+  {
+    "name": "Aragorn/Strider",
+    "origin": "Arnor",
+    "fellowshipMember": true,
+    "weapon": "Anduril"
+  },
+  {
+    "name": "Boromir",
+    "origin": "Gondor",
+    "fellowshipMember": true,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Samwise Gamgee",
+    "origin": "The Shire",
+    "fellowshipMember": true,
+    "weapon": "Barrow-Blade"
+  },
+  {
+    "name": "Meriadoc Brandybuck",
+    "origin": "The Shire",
+    "fellowshipMember": true,
+    "weapon": "Barrow-Blade"
+  },
+  {
+    "name": "Peregrin Took",
+    "origin": "The Shire",
+    "fellowshipMember": true,
+    "weapon": "Barrow-Blade"
+  },
+  {
+    "name": "Elrond",
+    "origin": "Rivendell",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Arwen",
+    "origin": "Rivendell",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Éomer",
+    "origin": "Rohan",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Théoden, son of Thengel",
+    "origin": "Rohan",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Bilbo Baggins",
+    "origin": "The Shire",
+    "fellowshipMember": false,
+    "weapon": "Sting"
+  },
+  {
+    "name": "Éowyn",
+    "origin": "Rohan",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Faramir",
+    "origin": "Gondor",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Galadriel",
+    "origin": "Valinor",
+    "fellowshipMember": false,
+    "weapon": "Sword"
+  },
+  {
+    "name": "Tom Bombadil",
+    "origin": "Unknown",
+    "fellowshipMember": false,
+    "weapon": "none"
+  },
+  {
+    "name": "Saruman The White",
+    "origin": "Valinor",
+    "fellowshipMember": false,
+    "weapon": "Staff"
+  },
+  {
+    "name": "Celeborn",
+    "origin": "Valinor",
+    "fellowshipMember": false,
+    "weapon": "unknown"
+  }
+]
+
+ 
