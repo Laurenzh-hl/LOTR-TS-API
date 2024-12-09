@@ -1,20 +1,41 @@
-import { DataTypes, Model } from "sequelize";
+import {
+  BelongsToCreateAssociationMixin,
+  BelongsToGetAssociationMixin,
+  BelongsToSetAssociationMixin,
+  CreationOptional,
+  DataTypes,
+  ForeignKey,
+  HasManyAddAssociationMixin,
+  HasManyAddAssociationsMixin,
+  HasManyCountAssociationsMixin,
+  HasManyCreateAssociationMixin,
+  HasManyGetAssociationsMixin,
+  HasManyHasAssociationMixin,
+  HasManyHasAssociationsMixin,
+  HasManyRemoveAssociationMixin,
+  HasManyRemoveAssociationsMixin,
+  HasManySetAssociationsMixin,
+  InferAttributes,
+  InferCreationAttributes,
+  Model,
+} from "sequelize";
+
 import db from "../config/db";
 
-export interface CharAttributes {
-  id: number;
-  name: string;
-  origin: string;
-  fellowshipMember: boolean;
-  weapon: string;
-}
+export class Character extends Model<
+  InferAttributes<Character>,
+  InferCreationAttributes<Character>
+> {
+  declare id: CreationOptional<number>;
+  declare name: string;
+  declare origin: string;
+  declare fellowshipMember: CreationOptional<boolean>;
+  declare weapon: string;
+  declare raceId: ForeignKey<Race["id"]>;
 
-export class Character extends Model<CharAttributes> implements CharAttributes {
-  id!: number;
-  name!: string;
-  origin!: string;
-  fellowshipMember!: boolean;
-  weapon!: string;
+  declare getRace: BelongsToGetAssociationMixin<Race>;
+  declare setRace: BelongsToSetAssociationMixin<Race, number>;
+  declare createRace: BelongsToCreateAssociationMixin<Race>;
 }
 
 Character.init(
@@ -48,22 +69,27 @@ Character.init(
   }
 );
 
-export interface RaceAttributes {
-  id: number;
-  name: string;
-  dominions: string;
-  languages: string;
-  lifespan: string;
-  height: string;
-}
+export class Race extends Model<
+  InferAttributes<Race>,
+  InferCreationAttributes<Race>
+> {
+  declare id: CreationOptional<number>;
+  declare name: string;
+  declare dominions: string;
+  declare languages: string;
+  declare lifespan: string;
+  declare height: string;
 
-export class Race extends Model<RaceAttributes> implements RaceAttributes {
-  id!: number;
-  name!: string;
-  dominions!: string;
-  languages!: string;
-  lifespan!: string;
-  height!: string;
+  declare getCharacters: HasManyGetAssociationsMixin<Character>;
+  declare countCharacters: HasManyCountAssociationsMixin;
+  declare hasCharacter: HasManyHasAssociationMixin<Character, number>;
+  declare hasCharacters: HasManyHasAssociationsMixin<Character, number>;
+  declare setCharacters: HasManySetAssociationsMixin<Character, number>;
+  declare addCharacter: HasManyAddAssociationMixin<Character, number>;
+  declare addCharacters: HasManyAddAssociationsMixin<Character, number>;
+  declare removeCharacter: HasManyRemoveAssociationMixin<Character, number>;
+  declare removeCharacters: HasManyRemoveAssociationsMixin<Character, number>;
+  declare createCharacter: HasManyCreateAssociationMixin<Character, "raceId">;
 }
 
 Race.init(

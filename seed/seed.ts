@@ -10,16 +10,16 @@ const syncSeed = async () => {
   const characters = await Character.bulkCreate(charData);
   const races = await Race.bulkCreate(raceData);
 
-  // associate some data
-  // await Promise.all([
-  //   races[0].setCharacters([
-  //     characters[0],
-  //     characters[6],
-  //     characters[7],
-  //     characters[8],
-  //     characters[13],
-  //   ]),
-  // ]);
+  //associate some data
+  await Promise.all([
+    races[0].setCharacters([
+      characters[0],
+      characters[6],
+      characters[7],
+      characters[8],
+      characters[13],
+    ]),
+  ]);
 
   console.log("database populated");
 };
