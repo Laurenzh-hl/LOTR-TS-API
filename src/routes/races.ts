@@ -44,6 +44,20 @@ router.get("/:raceId", async function (req: Request, res: Response) {
   }
 });
 
+router.get("/:raceId/characters", async function (req: Request, res: Response) {
+  try {
+    const race = await Race.findByPk(req.params.raceId);
+    if (!race) {
+      res.status(404).json({ error: "Race not found" });
+      return;
+    }
+    const characters = await race.getCharacters();
+    res.status(200).json(characters);
+  } catch (error) {
+    res.json({ error: "Failed to fetch characters" });
+  }
+});
+
 router.patch(
   "/:raceId",
   ModelValidator.checkRacePatch(),
