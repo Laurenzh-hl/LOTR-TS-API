@@ -31,9 +31,9 @@ router.get("/", async function (req: Request, res: Response) {
   }
 });
 
-router.get("/:id", async function (req: Request, res: Response) {
+router.get("/:charId", async function (req: Request, res: Response) {
   try {
-    const character = await Character.findByPk(req.params.id);
+    const character = await Character.findByPk(req.params.charId);
     if (character) {
       res.json(character);
     } else {
@@ -45,7 +45,7 @@ router.get("/:id", async function (req: Request, res: Response) {
 });
 
 router.patch(
-  "/:id",
+  "/:charId",
   ModelValidator.checkCharPatch(),
   async function (req: Request, res: Response) {
     const errors = validationResult(req);
@@ -54,9 +54,9 @@ router.patch(
     } else {
       try {
         await Character.update(req.body, {
-          where: { id: req.params.id },
+          where: { id: req.params.charId },
         });
-        const updatedChar = await Character.findByPk(req.params.id);
+        const updatedChar = await Character.findByPk(req.params.charId);
         if (updatedChar) {
           res.status(200).json(updatedChar);
         } else {
@@ -69,10 +69,10 @@ router.patch(
   }
 );
 
-router.delete("/:id", async function (req, res) {
+router.delete("/:charId", async function (req, res) {
   try {
     const deletedChar = await Character.destroy({
-      where: { id: req.params.id },
+      where: { id: req.params.charId },
     });
     res.json(deletedChar);
   } catch (error) {

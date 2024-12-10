@@ -31,9 +31,9 @@ router.get("/", async function (req: Request, res: Response) {
   }
 });
 
-router.get("/:id", async function (req: Request, res: Response) {
+router.get("/:raceId", async function (req: Request, res: Response) {
   try {
-    const race = await Race.findByPk(req.params.id);
+    const race = await Race.findByPk(req.params.raceId);
     if (race) {
       res.json(race);
     } else {
@@ -45,7 +45,7 @@ router.get("/:id", async function (req: Request, res: Response) {
 });
 
 router.patch(
-  "/:id",
+  "/:raceId",
   ModelValidator.checkRacePatch(),
   async function (req: Request, res: Response) {
     const errors = validationResult(req);
@@ -54,9 +54,9 @@ router.patch(
     } else {
       try {
         await Race.update(req.body, {
-          where: { id: req.params.id },
+          where: { id: req.params.raceId },
         });
-        const updatedRace = await Race.findByPk(req.params.id);
+        const updatedRace = await Race.findByPk(req.params.raceId);
         if (updatedRace) {
           res.status(200).json(updatedRace);
         } else {
@@ -69,10 +69,10 @@ router.patch(
   }
 );
 
-router.delete("/:id", async function (req, res) {
+router.delete("/:raceId", async function (req, res) {
   try {
     const deletedRace = await Race.destroy({
-      where: { id: req.params.id },
+      where: { id: req.params.raceId },
     });
     res.json(deletedRace);
   } catch (error) {

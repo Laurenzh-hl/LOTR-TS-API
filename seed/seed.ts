@@ -19,6 +19,23 @@ const syncSeed = async () => {
       characters[8],
       characters[13],
     ]),
+    races[1].setCharacters([
+      characters[4],
+      characters[5],
+      characters[11],
+      characters[12],
+      characters[14],
+      characters[15],
+    ]),
+    races[2].setCharacters([
+      characters[1],
+      characters[9],
+      characters[10],
+      characters[16],
+      characters[19],
+    ]),
+    races[3].setCharacters([characters[2], characters[18]]),
+    races[4].setCharacters([characters[3]]),
   ]);
 
   console.log("database populated");
