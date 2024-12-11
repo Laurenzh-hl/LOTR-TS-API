@@ -1,119 +1,139 @@
  [
   {
+    "id": 1,
     "name": "Frodo Baggins",
     "origin": "The Shire",
     "fellowshipMember": true,
     "weapon": "Sting"
   },
   {
+    "id": 2,
     "name": "Legolas",
     "origin": "Mirkwood",
     "fellowshipMember": true,
     "weapon": "Bow"
   },
   {
+    "id": 3,
     "name": "Gandalf The Grey",
     "origin": "Valinor",
     "fellowshipMember": true,
     "weapon": "Staff"
   },
   {
+    "id": 4,
     "name": "Gimli, Son of Gloin",
     "origin": "Erebor",
     "fellowshipMember": true,
     "weapon": "Axe"
   },
   {
+    "id": 5,
     "name": "Aragorn/Strider",
     "origin": "Arnor",
     "fellowshipMember": true,
     "weapon": "Anduril"
   },
   {
+    "id": 6,
     "name": "Boromir",
     "origin": "Gondor",
     "fellowshipMember": true,
     "weapon": "Sword"
   },
   {
+    "id": 7,
     "name": "Samwise Gamgee",
     "origin": "The Shire",
     "fellowshipMember": true,
     "weapon": "Barrow-Blade"
   },
   {
+    "id": 8,
     "name": "Meriadoc Brandybuck",
     "origin": "The Shire",
     "fellowshipMember": true,
     "weapon": "Barrow-Blade"
   },
   {
+    "id": 9,
     "name": "Peregrin Took",
     "origin": "The Shire",
     "fellowshipMember": true,
     "weapon": "Barrow-Blade"
   },
   {
+    "id": 10,
     "name": "Elrond",
     "origin": "Rivendell",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 11,
     "name": "Arwen",
     "origin": "Rivendell",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 12,
     "name": "Éomer",
     "origin": "Rohan",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 13,
     "name": "Théoden, son of Thengel",
     "origin": "Rohan",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 14,
     "name": "Bilbo Baggins",
     "origin": "The Shire",
     "fellowshipMember": false,
     "weapon": "Sting"
   },
   {
+    "id": 15,
     "name": "Éowyn",
     "origin": "Rohan",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 16,
     "name": "Faramir",
     "origin": "Gondor",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 17,
     "name": "Galadriel",
     "origin": "Valinor",
     "fellowshipMember": false,
     "weapon": "Sword"
   },
   {
+    "id": 18,
     "name": "Tom Bombadil",
     "origin": "Unknown",
     "fellowshipMember": false,
     "weapon": "none"
   },
   {
+    "id": 19,
     "name": "Saruman The White",
     "origin": "Valinor",
     "fellowshipMember": false,
     "weapon": "Staff"
   },
   {
+    "id": 20,
     "name": "Celeborn",
     "origin": "Valinor",
     "fellowshipMember": false,

@@ -1,5 +1,6 @@
 [
     {
+      "id": 1,
       "name": "Hobbits",
       "dominions": "The Shire, Buckland, Bree",
       "languages": "Hobbit-speech, Westron",
@@ -7,6 +8,7 @@
       "height": "60-120 cm"
     },
     {
+      "id": 2,
       "name": "Men",
       "dominions": "Middle-earth, Númenor",
       "languages": "Westron, Rohanese, Black Speech, Adûnai",
@@ -15,6 +17,7 @@
       "height": "150-195 cm"
     },
     {
+      "id": 3,
       "name": "Elves",
       "dominions": "Rivendell, Lothlórien, Mirkwood",
       "languages": "Quenya, Sindarin, Westron",
@@ -22,6 +25,7 @@
       "height": "180-270 cm"
     },
     {
+      "id": 4,
       "name": "Maiar",
       "dominions": "All",
       "languages": "Valarin, Quenya, Westron, Sindarin, Black Speech",
@@ -29,6 +33,7 @@
       "height": "Can alter physical form, usually same height as Men"
     },
     {
+      "id": 5,
       "name": "Dwarves",
       "dominions": "Khazad-dûm, Erebor, Iron Hills, Dunland",
       "languages": "Khuzdûl, Westron,",
@@ -36,6 +41,7 @@
       "height": "120-160 cm"
     },
     {
+      "id": 6,
       "name": "Ents",
       "dominions": "Eriador, East Beleriand, Fangorn Forest, Treegarth of Orthanc",
       "languages": "Old Entish, Elvish, Westron",
@@ -43,6 +49,7 @@
       "height": "365-430 cm"
     },
     {
+      "id": 7,
       "name": "Orcs",
       "dominions":
         "Mordor, Angmar, Misty Mountains, Isengard, Mirkwood, Dol Guldur",
@@ -51,6 +58,7 @@
       "height": "Almost man-height, sometimes much shorter"
     },
     {
+      "id": 8,
       "name": "Great Eagles",
       "dominions": "Taniquetil, Crissaegrim, Great Shelf in Middle-earth",
       "languages": "Westron, Quenya, Sindarin, Valarin",
