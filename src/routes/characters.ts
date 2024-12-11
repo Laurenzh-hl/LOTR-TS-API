@@ -58,6 +58,28 @@ router.get("/:charId/race", async function (req: Request, res: Response) {
   }
 });
 
+router.post(
+  "/:charId/races/:raceId",
+  async function (req: Request, res: Response) {
+    try {
+      const character = await Character.findByPk(req.params.charId);
+      if (!character) {
+        res.status(404).json({ error: "Character not found" });
+        return;
+      }
+      const race = await Race.findByPk(req.params.raceId);
+      if (!race) {
+        res.status(404).json({ error: "Race not found" });
+        return;
+      }
+      await character.setRace(race);
+      res.status(201).json({ msg: "Race successfully set for character!" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to set up association" });
+    }
+  }
+);
+
 router.patch(
   "/:charId",
   ModelValidator.checkCharPatch(),

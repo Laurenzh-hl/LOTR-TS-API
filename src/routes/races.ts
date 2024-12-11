@@ -10,13 +10,13 @@ router.post(
   async function (req: Request, res: Response) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.json({ errors: errors.array() });
+      res.status(400).json({ errors: errors.array() });
     } else {
       try {
         const newRace = await Race.create(req.body);
-        res.json({ newRace, msg: "Race successfully created!" });
+        res.status(201).json({ newRace, msg: "Race successfully created!" });
       } catch (error) {
-        res.json({ error: "Failed to add new race" });
+        res.status(500).json({ error: "Failed to add new race" });
       }
     }
   }
@@ -25,9 +25,9 @@ router.post(
 router.get("/", async function (req: Request, res: Response) {
   try {
     const races = await Race.findAll();
-    res.json(races);
+    res.status(200).json(races);
   } catch (error) {
-    res.json({ error: "Failed to fetch races" });
+    res.status(500).json({ error: "Failed to fetch races" });
   }
 });
 
@@ -35,12 +35,12 @@ router.get("/:raceId", async function (req: Request, res: Response) {
   try {
     const race = await Race.findByPk(req.params.raceId);
     if (race) {
-      res.json(race);
+      res.status(200).json(race);
     } else {
       res.status(404).json({ error: "Race not found" });
     }
   } catch (error) {
-    res.json({ error: "Failed to fetch race" });
+    res.status(500).json({ error: "Failed to fetch race" });
   }
 });
 
@@ -54,9 +54,31 @@ router.get("/:raceId/characters", async function (req: Request, res: Response) {
     const characters = await race.getCharacters();
     res.status(200).json(characters);
   } catch (error) {
-    res.json({ error: "Failed to fetch characters" });
+    res.status(500).json({ error: "Failed to fetch characters" });
   }
 });
+
+router.post(
+  "/:raceId/characters/:charId",
+  async function (req: Request, res: Response) {
+    try {
+      const race = await Race.findByPk(req.params.raceId);
+      if (!race) {
+        res.status(404).json({ error: "Race not found" });
+        return;
+      }
+      const character = await Character.findByPk(req.params.charId);
+      if (!character) {
+        res.status(404).json({ error: "Character not found" });
+        return;
+      }
+      await race.addCharacter(character);
+      res.status(201).json({ msg: "Character successfully added to race!" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to set up association" });
+    }
+  }
+);
 
 router.patch(
   "/:raceId",
@@ -64,7 +86,7 @@ router.patch(
   async function (req: Request, res: Response) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.json({ errors: errors.array() });
+      res.status(400).json({ errors: errors.array() });
     } else {
       try {
         await Race.update(req.body, {
@@ -77,7 +99,7 @@ router.patch(
           res.status(404).json({ error: "Race not found" });
         }
       } catch (error) {
-        res.status(400).json({ error: "Failed to update Race" });
+        res.status(500).json({ error: "Failed to update Race" });
       }
     }
   }
@@ -88,9 +110,9 @@ router.delete("/:raceId", async function (req, res) {
     const deletedRace = await Race.destroy({
       where: { id: req.params.raceId },
     });
-    res.json(deletedRace);
+    res.status(204).json(deletedRace);
   } catch (error) {
-    res.json({ error: "Failed to delete race" });
+    res.status(500).json({ error: "Failed to delete race" });
   }
 });
 
