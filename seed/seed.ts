@@ -3,7 +3,7 @@ const charData = require("./characters.json");
 const raceData = require("./races.json");
 import db from "../src/config/db";
 
-const syncSeed = async () => {
+export const syncSeed = async () => {
   // drop the db
   await db.sync({ force: true });
   // add the data

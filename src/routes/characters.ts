@@ -10,13 +10,15 @@ router.post(
   async function (req: Request, res: Response) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.json({ errors: errors.array() });
+      res.status(400).json({ errors: errors.array() });
     } else {
       try {
         const newCharacter = await Character.create(req.body);
-        res.json({ newCharacter, msg: "Character successfully created!" });
+        res
+          .status(201)
+          .json({ newCharacter, msg: "Character successfully created!" });
       } catch (error) {
-        res.json({ error: "Failed to add new character" });
+        res.status(500).json({ error: "Failed to add new character" });
       }
     }
   }
@@ -25,9 +27,9 @@ router.post(
 router.get("/", async function (req: Request, res: Response) {
   try {
     const characters = await Character.findAll();
-    res.json(characters);
+    res.status(200).json(characters);
   } catch (error) {
-    res.json({ error: "Failed to fetch characters" });
+    res.status(500).json({ error: "Failed to fetch characters" });
   }
 });
 
@@ -35,12 +37,12 @@ router.get("/:charId", async function (req: Request, res: Response) {
   try {
     const character = await Character.findByPk(req.params.charId);
     if (character) {
-      res.json(character);
+      res.status(200).json(character);
     } else {
       res.status(404).json({ error: "Character not found" });
     }
   } catch (error) {
-    res.json({ error: "Failed to fetch character" });
+    res.status(500).json({ error: "Failed to fetch character" });
   }
 });
 
@@ -54,7 +56,7 @@ router.get("/:charId/race", async function (req: Request, res: Response) {
     const race = await character.getRace();
     res.status(200).json(race);
   } catch (error) {
-    res.json({ error: "Failed to fetch race" });
+    res.status(500).json({ error: "Failed to fetch race" });
   }
 });
 
@@ -86,7 +88,7 @@ router.patch(
   async function (req: Request, res: Response) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.json({ errors: errors.array() });
+      res.status(400).json({ errors: errors.array() });
     } else {
       try {
         await Character.update(req.body, {
@@ -99,7 +101,7 @@ router.patch(
           res.status(404).json({ error: "Character not found" });
         }
       } catch (error) {
-        res.status(400).json({ error: "Failed to update character" });
+        res.status(500).json({ error: "Failed to update character" });
       }
     }
   }
@@ -110,9 +112,9 @@ router.delete("/:charId", async function (req, res) {
     const deletedChar = await Character.destroy({
       where: { id: req.params.charId },
     });
-    res.json(deletedChar);
+    res.status(204).json(deletedChar);
   } catch (error) {
-    res.json({ error: "Failed to delete character" });
+    res.status(500).json({ error: "Failed to delete character" });
   }
 });
 
