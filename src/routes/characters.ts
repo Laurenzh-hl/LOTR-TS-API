@@ -61,14 +61,20 @@ router.get("/:charId/race", async function (req: Request, res: Response) {
 });
 
 router.get("/origin/:origin", async function (req, res) {
-  const charsWithOrigin = [];
-  const characters = await Character.findAll();
-  for (let i = 0; i < characters.length; i++) {
-    if (characters[i].origin.toLowerCase() == req.params.origin.toLowerCase()) {
-      charsWithOrigin.push(characters[i]);
+  try {
+    const charsWithOrigin = [];
+    const characters = await Character.findAll();
+    for (let i = 0; i < characters.length; i++) {
+      if (
+        characters[i].origin.toLowerCase() == req.params.origin.toLowerCase()
+      ) {
+        charsWithOrigin.push(characters[i]);
+      }
     }
+    res.status(200).json(charsWithOrigin);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch characters" });
   }
-  res.json(charsWithOrigin);
 });
 
 router.post(

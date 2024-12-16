@@ -1,6 +1,7 @@
 import request from "supertest";
 import app from "../src/app";
 import { Character, Race } from "../src/Models/Models";
+import { CharInterface } from "./races.test";
 let charQuantity: number;
 
 beforeAll(async function () {
@@ -88,6 +89,36 @@ describe("GET /characters/:charId/race", () => {
     const response = await request(app).get("/characters/25/race");
     expect(response.statusCode).toBe(404);
     expect(response.body.error).toEqual("Character not found");
+  });
+});
+
+describe("GET /characters/origin/:origin", () => {
+  it("returns an array of characters", async () => {
+    const response = await request(app).get("/characters/origin/valinor");
+    const responseData = JSON.parse(response.text);
+    let areAllChars = responseData.every(function (
+      char: Character
+    ): char is Character {
+      if (char.name && char.origin && char.weapon) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    expect(areAllChars).toBe(true);
+  });
+
+  it("returns only characters with given origin", async () => {
+    const response = await request(app).get("/characters/origin/valinor");
+    const responseData = JSON.parse(response.text);
+    let areCorrectChars = responseData.every(function (char: CharInterface) {
+      if (char.origin.toLowerCase() === "valinor") {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    expect(areCorrectChars).toBe(true);
   });
 });
 

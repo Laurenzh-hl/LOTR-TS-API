@@ -3,7 +3,7 @@ import app from "../src/app";
 import { Character, Race } from "../src/Models/Models";
 let raceQuantity: number;
 
-interface CharInterface {
+export interface CharInterface {
   id: number;
   name: string;
   origin: string;
