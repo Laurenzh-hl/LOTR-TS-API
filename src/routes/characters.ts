@@ -60,6 +60,17 @@ router.get("/:charId/race", async function (req: Request, res: Response) {
   }
 });
 
+router.get("/origin/:origin", async function (req, res) {
+  const charsWithOrigin = [];
+  const characters = await Character.findAll();
+  for (let i = 0; i < characters.length; i++) {
+    if (characters[i].origin.toLowerCase() == req.params.origin.toLowerCase()) {
+      charsWithOrigin.push(characters[i]);
+    }
+  }
+  res.json(charsWithOrigin);
+});
+
 router.post(
   "/:charId/races/:raceId",
   async function (req: Request, res: Response) {
