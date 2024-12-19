@@ -110,7 +110,7 @@ router.delete("/:raceId", async function (req, res) {
     const deletedRace = await Race.destroy({
       where: { id: req.params.raceId },
     });
-    res.status(204).json(deletedRace);
+    res.status(200).json({ msg: "Race successfully removed" });
   } catch (error) {
     res.status(500).json({ error: "Failed to delete race" });
   }

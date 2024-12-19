@@ -129,7 +129,7 @@ router.delete("/:charId", async function (req, res) {
     const deletedChar = await Character.destroy({
       where: { id: req.params.charId },
     });
-    res.status(204).json(deletedChar);
+    res.status(200).json({ msg: "Character successfully removed" });
   } catch (error) {
     res.status(500).json({ error: "Failed to delete character" });
   }
